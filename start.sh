@@ -157,7 +157,7 @@ main() {
     check_python || exit 1
     check_venv
     check_dependencies || exit 1
-    check_server
+    
     
     echo ""
     
@@ -165,14 +165,14 @@ main() {
     find_algorithm_file || exit 1
     
     echo ""
-    read -p "按 Enter 键开始运行..." dummy
+    
     echo ""
     
     run_algorithm
     EXIT_CODE=$?
     
     echo ""
-    read -p "按 Enter 键退出..." dummy
+    
     
     exit $EXIT_CODE
 }
