@@ -97,35 +97,6 @@ check_dependencies() {
     fi
 }
 
-# 检查服务器是否运行
-check_server() {
-    print_info "检查服务器状态..."
-    
-    # 检查 8000 端口是否开放
-    if command -v nc &> /dev/null; then
-        nc -z 127.0.0.1 8000 2>/dev/null
-        if [ $? -eq 0 ]; then
-            print_success "服务器运行中 (http://127.0.0.1:8000)"
-            return 0
-        else
-            print_warning "服务器未运行！请先启动服务器"
-            return 1
-        fi
-    elif command -v curl &> /dev/null; then
-        curl -s http://127.0.0.1:8000 >/dev/null 2>&1
-        if [ $? -eq 0 ]; then
-            print_success "服务器运行中 (http://127.0.0.1:8000)"
-            return 0
-        else
-            print_warning "服务器未运行！请先启动服务器"
-            return 1
-        fi
-    else
-        print_warning "无法检查服务器状态（缺少 nc 或 curl）"
-        return 0
-    fi
-}
-
 # 查找算法文件
 find_algorithm_file() {
     print_info "查找算法文件..."
