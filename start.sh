@@ -134,19 +134,6 @@ run_algorithm() {
     echo ""
     
     $PYTHON_CMD "$ALGORITHM_FILE"
-    EXIT_CODE=$?
-    
-    echo ""
-    echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    
-    if [ $EXIT_CODE -eq 0 ]; then
-        print_success "算法执行完成"
-    else
-        print_error "算法执行出错 (退出码: $EXIT_CODE)"
-    fi
-    
-    return $EXIT_CODE
 }
 
 # 主函数
@@ -169,12 +156,9 @@ main() {
     echo ""
     
     run_algorithm
-    EXIT_CODE=$?
     
     echo ""
     
-    
-    exit $EXIT_CODE
 }
 
 # 运行主函数
